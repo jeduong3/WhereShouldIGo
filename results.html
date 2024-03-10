@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <style>
+        body {
+            background-color: lightyellow;
+        }
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        li {
+            flex: 0 0 30%; /* Adjust the width of each item as needed */
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Here are your list of options!</h1>
+    <ul>
+        {% for option in locations %}
+        <li>
+            <h2>{{ option['name'] }}</h2>
+            <p>Rating: {{ option['rating'] }}</p>
+            <p>Address: {{ option['address'] }}</p>
+            <p>Phone: {{ option.get('phone', 'N/A') }}</p>
+            <p>Distance: {{ option.get('distance') }} miles </p>
+            <img src="{{ option.get('image_url') }}" alt="Image not found">
+
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
